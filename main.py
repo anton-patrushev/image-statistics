@@ -6,13 +6,12 @@ from average import get_sample_average
 from deviation import get_standart_deviation
 from mode import get_mode
 from median import get_median
+from distribution import test_normal_distribution
 
 
 def main():
     image_one = open_image(consts.IMAGE_ONE_PATH)
     image_two = open_image(consts.IMAGE_TWO_PATH)
-
-    # render_image(image_one)
 
     gray_image_one, gray_path_one = rgb2gray(consts.IMAGE_ONE_PATH)
     gray_image_two, gray_path_two = rgb2gray(consts.IMAGE_TWO_PATH)
@@ -20,11 +19,12 @@ def main():
     hist_one = build_histogram(gray_image_one)
     hist_two = build_histogram(gray_image_two)
 
-    gray_image_one, gray_path_one = rgb2gray(consts.IMAGE_ONE_PATH)
-    gray_image_two, gray_path_two = rgb2gray(consts.IMAGE_TWO_PATH)
-
-    # render_gray_image(gray_image_one)
+    render_image(image_one)
+    render_gray_image(gray_image_one)
     render_histogram(gray_image_one)
+
+    render_image(image_two)
+    render_gray_image(gray_image_two)
     render_histogram(gray_image_two)
 
     sample_average_one = get_sample_average(hist_one)
@@ -56,6 +56,19 @@ def main():
         A=median_one))
     print("Median for image 2 hist = {A}".format(
         A=median_two))
+
+    is_one_normal = test_normal_distribution(hist_one)
+    is_two_normal = test_normal_distribution(hist_two)
+
+    if(is_one_normal):
+        print("Image 1 sample maybe normal distributed with probability = 1 - B, where B is unknown, or not distributed with probability = B")
+    else:
+        print("Image 1 sample maybe not be normal distributed with probability")
+
+    if(is_two_normal):
+        print("Image 1 sample maybe normal distributed with probability = 1 - B, where B is unknown, or not distributed with probability = B")
+    else:
+        print("Image 1 sample maybe not be normal distributed with probability")
 
 
 main()
