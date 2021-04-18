@@ -23,7 +23,7 @@ def render_image(image):
 def build_histogram(image):
     # 1 - image
     # 2 - color channels
-    # 4 - mask
+    # 3 - mask
     # bins
     # range
     hist = cv2.calcHist([image], [0], None, [256], [0, 255])

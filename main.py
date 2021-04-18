@@ -16,6 +16,9 @@ def main():
     gray_image_one, gray_path_one = rgb2gray(consts.IMAGE_ONE_PATH)
     gray_image_two, gray_path_two = rgb2gray(consts.IMAGE_TWO_PATH)
 
+    # can change
+    # current implementation - array from 0 to 255 elements el[index]=points count
+    # expected implementation - array from 0 to ***** (e.g. 4k image for example) elements (each element -> brightness value)
     hist_one = build_histogram(gray_image_one)
     hist_two = build_histogram(gray_image_two)
 

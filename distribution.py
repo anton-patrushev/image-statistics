@@ -21,8 +21,13 @@ def test_normal_distribution(x):
     # k_freedom = 8 - 1 - 1 = 6
 
     # from information data table for alpha and k
+
+    # TODO change (take from table but k_freedom & alpha values)
     chi2 = 12.592
 
     k2, p = normaltest(x)
+
+    print('chi 2')
+    print(p)
 
     return p < chi2  # if true - hypotesis MAYBE true
